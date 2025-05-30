@@ -1,0 +1,13 @@
+services:
+  dns:
+    image: dnsmasqblock:latest
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "53:53/udp"
+      - "53:53/tcp"
+    volumes:
+      - type: bind
+        source: dnsmasq.conf
+        target: /dnsmasq.conf
+    restart: always
